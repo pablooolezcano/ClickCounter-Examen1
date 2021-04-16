@@ -73,6 +73,9 @@ public class CounterPresenter implements CounterContract.Presenter {
       model.onDataFromNextScreen(savedState.data);
       state.clicks = savedState.data;
       clicks = Integer.parseInt(state.clicks);
+      if(state.data == "0"){
+        state.resetButton = false;
+      }
       // update the state if is necessary
       //state.data = savedState.data;
       //state.clicks = savedState.data;
