@@ -1,0 +1,12 @@
+<resources>
+    <string name="app_name">Click Counter</string>
+    <string name="clicks_title">Clicks</string>
+    <string name="counter_title">Counter</string>
+
+    <string name="counter_value">0</string>
+    <string name="reset_button">Reset</string>
+    <string name="clicks_button">Clicks</string>
+    <string name="increment_button">Increment</string>
+    <string name="clear_button">Clear</string>
+    <string name="clicks_value">0</string>
+</resources>
