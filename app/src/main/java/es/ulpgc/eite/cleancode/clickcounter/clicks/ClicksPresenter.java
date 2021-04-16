@@ -39,7 +39,11 @@ public class ClicksPresenter implements ClicksContract.Presenter {
 
       // update the model if is necessary
       model.onDataFromPreviousScreen(savedState.data);
-
+      if(savedState.data == "0"){
+        state.clearButton = false;
+      } else{
+        state.clearButton = true;
+      }
       // update the state if is necessary
       state.data = savedState.data;
     }
@@ -82,6 +86,8 @@ public class ClicksPresenter implements ClicksContract.Presenter {
   @Override
   public void onBackPressed() {
     // Log.e(TAG, "onBackPressed()");
+    ClicksToCounterState newState = new ClicksToCounterState(state.data);
+    passStateToPreviousScreen(newState);
   }
 
   @Override
@@ -97,6 +103,9 @@ public class ClicksPresenter implements ClicksContract.Presenter {
   @Override
   public void onClearPressed() {
     // Log.e(TAG, "onClearPressed()");
+    view.get().resetClicks();
+    state.clearButton = false;
+    view.get().onDataUpdated(state);
   }
 
   private void passStateToPreviousScreen(ClicksToCounterState state) {

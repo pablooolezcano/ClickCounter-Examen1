@@ -8,6 +8,7 @@ public interface ClicksContract {
   interface View {
     void injectPresenter(Presenter presenter);
     void onDataUpdated(ClicksViewModel viewModel);
+    void resetClicks();
   }
 
   interface Presenter {

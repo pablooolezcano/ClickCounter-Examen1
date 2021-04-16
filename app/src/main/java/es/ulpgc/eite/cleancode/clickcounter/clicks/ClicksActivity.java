@@ -72,6 +72,12 @@ public class ClicksActivity
 
     // deal with the data
     ((TextView) findViewById(R.id.tvClicks)).setText(viewModel.data);
+    findViewById(R.id.btnClear).setEnabled(viewModel.clearButton);
+  }
+  @Override
+  public void resetClicks(){
+    ((TextView) findViewById(R.id.tvClicks)).setText(R.string.clicks_value);
+
   }
 
   @Override

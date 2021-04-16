@@ -33,7 +33,11 @@ public class CounterPresenter implements CounterContract.Presenter {
 
     // call the model and update the state
     state.data = model.getStoredData();
-
+    state.incrementButton =true;
+    state.clicksButton = false;
+    if(state.data != model.getStoredData()){
+      state.resetButton=true;
+    }
     /*
     // use passed state if is necessary
     PreviousToCounterState savedState = getStateFromPreviousScreen();
@@ -69,12 +73,14 @@ public class CounterPresenter implements CounterContract.Presenter {
 
       // update the state if is necessary
       state.data = savedState.data;
+      //state.clicks = savedState.data;
     }
 
     // call the model and update the state
     //state.data = model.getStoredData();
 
     // update the view
+
     view.get().onDataUpdated(state);
 
   }
@@ -114,14 +120,31 @@ public class CounterPresenter implements CounterContract.Presenter {
   @Override
   public void onIncrementPressed() {
     // Log.e(TAG, "onIncrementPressed()");
+      state.resetButton = true;
+      state.clicksButton = true;
+//      int clicks = Integer.parseInt(state.clicks);
+//      clicks++;
+//      state.clicks = "" + clicks;
     int cuenta = Integer.parseInt(state.data);
     cuenta++;
     state.data = "" + cuenta;
     model.setData(state.data);
+    if(state.data == "9"){
+      state.incrementButton = false;
+    }
+    if(state.data == "0"){
+      state.resetButton = false;
+    }
+    //disableIncrementButton();
     view.get().onDataUpdated(state);
 
   }
 
+//  private void disableIncrementButton(){
+//    if(state.data == " 9"){
+//      state.incrementButton = false;
+//    }
+//  }
   private void passStateToNextScreen(CounterToClicksState state) {
     mediator.setCounterNextScreenState(state);
   }

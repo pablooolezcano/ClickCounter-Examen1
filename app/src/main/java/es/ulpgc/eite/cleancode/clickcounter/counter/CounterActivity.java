@@ -94,10 +94,14 @@ public class CounterActivity
 
     // deal with the data
     ((TextView) findViewById(R.id.tvCounter)).setText(viewModel.data);
+    findViewById(R.id.btnReset).setEnabled(viewModel.resetButton);
+    findViewById(R.id.btnIncrement).setEnabled(viewModel.incrementButton);
+    findViewById(R.id.btnClicks).setEnabled(viewModel.clicksButton);
   }
   @Override
  public void resetCounter(){
     ((TextView) findViewById(R.id.tvCounter)).setText(R.string.counter_value);
+
  }
 
   @Override
