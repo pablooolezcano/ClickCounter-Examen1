@@ -23,9 +23,15 @@ public class CounterModel implements CounterContract.Model {
     // Log.e(TAG, "onRestartScreen()");
   }
 
+
   @Override
   public void onDataFromNextScreen(String data) {
     // Log.e(TAG, "onDataFromNextScreen()");
+  }
+
+  @Override
+  public void setData(String data) {
+    this.data = data;
   }
 
   @Override

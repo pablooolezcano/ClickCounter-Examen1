@@ -114,6 +114,8 @@ public class CounterPresenter implements CounterContract.Presenter {
     int cuenta = Integer.parseInt(state.data);
     cuenta++;
     state.data = "" + cuenta;
+    model.setData(state.data);
+    view.get().onDataUpdated(state);
 
   }
 
