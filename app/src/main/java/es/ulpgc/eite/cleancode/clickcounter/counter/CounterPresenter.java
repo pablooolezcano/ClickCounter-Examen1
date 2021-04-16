@@ -116,13 +116,14 @@ public class CounterPresenter implements CounterContract.Presenter {
     // Log.e(TAG, "onResetPressed()");
     state.data = "0";
     model.setData(state.data);
+    state.incrementButton = true;
     view.get().resetCounter();
   }
 
   @Override
   public void onIncrementPressed() {
     // Log.e(TAG, "onIncrementPressed()");
-    // hay que conseguir que pare en 9
+    // solo queda que conseguir que pare en 9
       state.resetButton = true;
       state.clicksButton = true;
     clicks++;
@@ -131,8 +132,8 @@ public class CounterPresenter implements CounterContract.Presenter {
     cuenta++;
     state.data = "" + cuenta;
     model.setData(state.data);
-    if(state.data == "9"){
-      state.incrementButton = false;
+    if(cuenta == 10){
+      state.data = "0";
     }
     if(state.data == "0"){
       state.resetButton = false;
