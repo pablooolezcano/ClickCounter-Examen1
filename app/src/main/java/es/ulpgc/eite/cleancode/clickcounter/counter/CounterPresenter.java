@@ -120,6 +120,8 @@ public class CounterPresenter implements CounterContract.Presenter {
     state.data = "0";
     model.setData(state.data);
     state.incrementButton = true;
+    state.resetButton = false;
+    view.get().onDataUpdated(state);
     view.get().resetCounter();
   }
 
