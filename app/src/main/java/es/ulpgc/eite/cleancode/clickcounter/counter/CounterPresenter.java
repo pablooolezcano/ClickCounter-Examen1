@@ -98,6 +98,9 @@ public class CounterPresenter implements CounterContract.Presenter {
   @Override
   public void onClicksPressed() {
     // Log.e(TAG, "onClicksPressed()");
+    CounterToClicksState newState = new CounterToClicksState(state.data);
+    passStateToNextScreen(newState);
+    view.get().navigateToNextScreen();
   }
 
   @Override
@@ -108,6 +111,10 @@ public class CounterPresenter implements CounterContract.Presenter {
   @Override
   public void onIncrementPressed() {
     // Log.e(TAG, "onIncrementPressed()");
+    int cuenta = Integer.parseInt(state.data);
+    cuenta++;
+    state.data = "" + cuenta;
+
   }
 
   private void passStateToNextScreen(CounterToClicksState state) {
