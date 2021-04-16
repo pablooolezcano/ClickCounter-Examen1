@@ -122,6 +122,7 @@ public class CounterPresenter implements CounterContract.Presenter {
   @Override
   public void onIncrementPressed() {
     // Log.e(TAG, "onIncrementPressed()");
+    // hay que conseguir que pare en 9
       state.resetButton = true;
       state.clicksButton = true;
     clicks++;
