@@ -95,6 +95,10 @@ public class CounterActivity
     // deal with the data
     ((TextView) findViewById(R.id.tvCounter)).setText(viewModel.data);
   }
+  @Override
+ public void resetCounter(){
+    ((TextView) findViewById(R.id.tvCounter)).setText(R.string.counter_value);
+ }
 
   @Override
   public void injectPresenter(CounterContract.Presenter presenter) {

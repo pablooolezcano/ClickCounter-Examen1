@@ -106,6 +106,9 @@ public class CounterPresenter implements CounterContract.Presenter {
   @Override
   public void onResetPressed() {
     // Log.e(TAG, "onResetPressed()");
+    state.data = "0";
+    model.setData(state.data);
+    view.get().resetCounter();
   }
 
   @Override
