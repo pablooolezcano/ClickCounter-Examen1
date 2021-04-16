@@ -13,6 +13,7 @@ public class CounterPresenter implements CounterContract.Presenter {
   private WeakReference<CounterContract.View> view;
   private CounterState state;
   private CounterContract.Model model;
+  private int clicks;
 
   private AppMediator mediator;
 
@@ -30,7 +31,7 @@ public class CounterPresenter implements CounterContract.Presenter {
     if (state == null) {
       state = new CounterState();
     }
-
+    clicks = 0;
     // call the model and update the state
     state.data = model.getStoredData();
     state.incrementButton =true;
@@ -70,9 +71,10 @@ public class CounterPresenter implements CounterContract.Presenter {
 
       // update the model if is necessary
       model.onDataFromNextScreen(savedState.data);
-
+      state.clicks = savedState.data;
+      clicks = Integer.parseInt(state.clicks);
       // update the state if is necessary
-      state.data = savedState.data;
+      //state.data = savedState.data;
       //state.clicks = savedState.data;
     }
 
@@ -104,7 +106,7 @@ public class CounterPresenter implements CounterContract.Presenter {
   @Override
   public void onClicksPressed() {
     // Log.e(TAG, "onClicksPressed()");
-    CounterToClicksState newState = new CounterToClicksState(state.data);
+    CounterToClicksState newState = new CounterToClicksState(state.clicks);
     passStateToNextScreen(newState);
     view.get().navigateToNextScreen();
   }
@@ -122,9 +124,8 @@ public class CounterPresenter implements CounterContract.Presenter {
     // Log.e(TAG, "onIncrementPressed()");
       state.resetButton = true;
       state.clicksButton = true;
-//      int clicks = Integer.parseInt(state.clicks);
-//      clicks++;
-//      state.clicks = "" + clicks;
+    clicks++;
+    state.clicks = "" + clicks;
     int cuenta = Integer.parseInt(state.data);
     cuenta++;
     state.data = "" + cuenta;

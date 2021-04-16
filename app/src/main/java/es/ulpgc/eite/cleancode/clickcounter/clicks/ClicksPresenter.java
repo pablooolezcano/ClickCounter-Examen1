@@ -103,7 +103,8 @@ public class ClicksPresenter implements ClicksContract.Presenter {
   @Override
   public void onClearPressed() {
     // Log.e(TAG, "onClearPressed()");
-    view.get().resetClicks();
+    //view.get().resetClicks();
+    state.data = "0";
     state.clearButton = false;
     view.get().onDataUpdated(state);
   }
